@@ -20,7 +20,6 @@ import org.springframework.data.mongodb.core.mapping.DocumentReference;
 @Setter
 public class Cliente {
 
-    @NotNull
     @Id
     private String id;
 
@@ -43,6 +42,7 @@ public class Cliente {
     @DocumentReference(lazy = true, lookup = "{ 'cliente' : ?#{#self._id} }")
     @ReadOnlyProperty
     private Set<Direccion> direcciones;
+
 
     @DocumentReference(lazy = true, lookup = "{ 'cliente' : ?#{#self._id} }")
     @ReadOnlyProperty

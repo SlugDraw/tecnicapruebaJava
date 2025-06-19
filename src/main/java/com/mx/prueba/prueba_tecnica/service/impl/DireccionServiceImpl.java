@@ -43,7 +43,6 @@ public class DireccionServiceImpl implements DireccionService {
     public String create(final DireccionDTO direccionDTO) {
         final Direccion direccion = new Direccion();
         mapToEntity(direccionDTO, direccion);
-        direccion.setId(direccionDTO.getId());
         return direccionRepository.save(direccion).getId();
     }
 

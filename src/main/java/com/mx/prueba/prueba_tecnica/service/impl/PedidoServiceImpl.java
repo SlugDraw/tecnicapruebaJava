@@ -43,7 +43,6 @@ public class PedidoServiceImpl  implements PedidosService {
     public String create(final PedidosDTO pedidosDTO) {
         final Pedidos pedidos = new Pedidos();
         mapToEntity(pedidosDTO, pedidos);
-        pedidos.setId(pedidosDTO.getId());
         return pedidosRepository.save(pedidos).getId();
     }
 

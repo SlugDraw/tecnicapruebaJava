@@ -31,10 +31,10 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public List<ClienteDTO> findAll() {
+    public List<Cliente> findAll() {
         final List<Cliente> clientes = clienteRepository.findAll(Sort.by("id"));
         return clientes.stream()
-                .map(cliente -> mapToDTO(cliente, new ClienteDTO()))
+
                 .toList();
     }
 
@@ -49,7 +49,6 @@ public class ClienteServiceImpl implements ClienteService {
     public String create(final ClienteDTO clienteDTO) {
         final Cliente cliente = new Cliente();
         mapToEntity(clienteDTO, cliente);
-        cliente.setId(clienteDTO.getId());
         return clienteRepository.save(cliente).getId();
     }
 
@@ -74,15 +73,14 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public ReferencedWarning getReferencedWarning(final String id) {
         final ReferencedWarning referencedWarning = new ReferencedWarning();
-        final Cliente cliente = clienteRepository.findById(id)
-                .orElseThrow(NotFoundException::new);
-        final Direccion clienteDireccion = direccionRepository.findFirstByCliente(cliente);
+        final Direccion clienteDireccion = direccionRepository.findFirstByClienteId(id);
+
         if (clienteDireccion != null) {
             referencedWarning.setKey("cliente.direccion.cliente.referenced");
             referencedWarning.addParam(clienteDireccion.getId());
             return referencedWarning;
         }
-        final Pedidos clientePedidos = pedidosRepository.findFirstByCliente(cliente);
+        final Pedidos clientePedidos = pedidosRepository.findFirstByClienteId(id);
         if (clientePedidos != null) {
             referencedWarning.setKey("cliente.pedidos.cliente.referenced");
             referencedWarning.addParam(clientePedidos.getId());
@@ -97,6 +95,8 @@ public class ClienteServiceImpl implements ClienteService {
         clienteDTO.setApellidoMaterno(cliente.getApellidoMaterno());
         clienteDTO.setApellidoPaterno(cliente.getApellidoPaterno());
         clienteDTO.setCorreo(cliente.getCorreo());
+        System.out.println(cliente.getDirecciones());
+
         return clienteDTO;
     }
 

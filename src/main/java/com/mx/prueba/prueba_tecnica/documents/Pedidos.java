@@ -1,5 +1,7 @@
 package com.mx.prueba.prueba_tecnica.documents;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.time.OffsetDateTime;
@@ -18,7 +20,6 @@ import org.springframework.data.mongodb.core.mapping.DocumentReference;
 @Setter
 public class Pedidos {
 
-    @NotNull
     @Id
     private String id;
 
@@ -33,7 +34,13 @@ public class Pedidos {
     private Double precio;
 
     @DocumentReference(lazy = true)
+    @JsonIgnore
     private Cliente cliente;
+
+    @JsonProperty("clienteId")
+    public String getClienteId() {
+        return cliente != null ? cliente.getId() : null;
+    }
 
     @CreatedDate
     private OffsetDateTime dateCreated;

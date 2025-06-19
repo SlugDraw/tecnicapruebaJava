@@ -1,5 +1,6 @@
 package com.mx.prueba.prueba_tecnica.rest;
 
+import com.mx.prueba.prueba_tecnica.documents.Cliente;
 import com.mx.prueba.prueba_tecnica.models.ClienteDTO;
 import com.mx.prueba.prueba_tecnica.service.ClienteService;
 import com.mx.prueba.prueba_tecnica.util.ReferencedException;
@@ -31,7 +32,7 @@ public class ClienteResource {
     }
 
     @GetMapping
-    public ResponseEntity<List<ClienteDTO>> getAllClientes() {
+    public ResponseEntity<List<Cliente>> getAllClientes() {
         return ResponseEntity.ok(clienteService.findAll());
     }
 
