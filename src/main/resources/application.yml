@@ -1,0 +1,18 @@
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_DATABASE_URL:mongodb://localhost:27017/prueba-tecnica}
+      auto-index-creation: true
+error:
+  handling:
+    http-status-in-json-response: true
+    exception-logging: NO_LOGGING
+    full-stacktrace-http-statuses: 5xx
+    log-levels:
+      5xx: ERROR
+    codes:
+      ClienteIdValid: CLIENTE_ID_VALID
+      DireccionIdValid: DIRECCION_ID_VALID
+      PedidosIdValid: PEDIDOS_ID_VALID
+springdoc:
+  pathsToMatch: /, /api/**
