@@ -33,16 +33,12 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public List<Cliente> findAll() {
         final List<Cliente> clientes = clienteRepository.findAll(Sort.by("id"));
-        return clientes.stream()
-
-                .toList();
+        return clientes.stream().toList();
     }
 
     @Override
-    public ClienteDTO get(final String id) {
-        return clienteRepository.findById(id)
-                .map(cliente -> mapToDTO(cliente, new ClienteDTO()))
-                .orElseThrow(NotFoundException::new);
+    public Cliente get(final String id) {
+        return clienteRepository.findById(id).orElseThrow(NotFoundException::new);
     }
 
     @Override

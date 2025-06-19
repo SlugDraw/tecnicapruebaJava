@@ -37,7 +37,7 @@ public class ClienteResource {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ClienteDTO> getCliente(@PathVariable(name = "id") final String id) {
+    public ResponseEntity<Cliente> getCliente(@PathVariable(name = "id") final String id) {
         return ResponseEntity.ok(clienteService.get(id));
     }
 

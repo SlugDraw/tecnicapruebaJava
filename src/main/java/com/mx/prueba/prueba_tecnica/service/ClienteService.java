@@ -11,7 +11,7 @@ import java.util.List;
 public interface ClienteService {
 
     List<Cliente> findAll();
-    ClienteDTO get(final String id);
+    Cliente get(final String id);
     String create(final ClienteDTO clienteDTO);
     void update(final String id, final ClienteDTO clienteDTO);
     void delete(String id);
