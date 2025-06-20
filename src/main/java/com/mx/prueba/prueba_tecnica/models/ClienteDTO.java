@@ -35,7 +35,6 @@ public class ClienteDTO {
     private String correo;
 
     private Set<Direccion> direcciones;
-
     private Set<Pedidos> pedidos;
 
 }

@@ -1,7 +1,9 @@
 spring:
   data:
     mongodb:
-      uri: ${MONGODB_DATABASE_URL:mongodb://localhost:27017/prueba-tecnica}
+      #uri: ${MONGODB_DATABASE_URL:mongodb://localhost:27017/prueba-tecnica}
+      uri: mongodb+srv://raymundofg:L8i1ak6P6GWwvSai@pruebas.taash2m.mongodb.net/?retryWrites=true&w=majority&appName=pruebas
+      database: pruebas
       auto-index-creation: true
 error:
   handling:
