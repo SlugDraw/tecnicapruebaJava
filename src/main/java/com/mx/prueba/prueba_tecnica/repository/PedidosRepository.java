@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 public interface PedidosRepository extends MongoRepository<Pedidos, String> {
 
     Pedidos findFirstByCliente(Cliente cliente);
-    Pedidos findFirstByClienteId(String id);
+    Pedidos findFirstByCliente_Id(String id);
 
     boolean existsByIdIgnoreCase(String id);
 

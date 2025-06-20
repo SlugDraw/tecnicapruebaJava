@@ -69,14 +69,14 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public ReferencedWarning getReferencedWarning(final String id) {
         final ReferencedWarning referencedWarning = new ReferencedWarning();
-        final Direccion clienteDireccion = direccionRepository.findFirstByClienteId(id);
+        final Direccion clienteDireccion = direccionRepository.findFirstByCliente_Id(id);
 
         if (clienteDireccion != null) {
             referencedWarning.setKey("cliente.direccion.cliente.referenced");
             referencedWarning.addParam(clienteDireccion.getId());
             return referencedWarning;
         }
-        final Pedidos clientePedidos = pedidosRepository.findFirstByClienteId(id);
+        final Pedidos clientePedidos = pedidosRepository.findFirstByCliente_Id(id);
         if (clientePedidos != null) {
             referencedWarning.setKey("cliente.pedidos.cliente.referenced");
             referencedWarning.addParam(clientePedidos.getId());

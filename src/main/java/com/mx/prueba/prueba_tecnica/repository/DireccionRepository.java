@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 public interface DireccionRepository extends MongoRepository<Direccion, String> {
 
     Direccion findFirstByCliente(Cliente cliente);
-    Direccion findFirstByClienteId(String clienteId);
+    Direccion findFirstByCliente_Id(String clienteId);
     boolean existsByIdIgnoreCase(String id);
 
 }
